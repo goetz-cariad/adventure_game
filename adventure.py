@@ -1172,16 +1172,21 @@ def start_game():
 
             print_sleep(go)
             # retry?
-            choice = input("Do you want to play again? y/n ")
-            if choice != "y":
-                # any other input is ok to close the game
-                play = False
-                print_sleep("*" * lwidth)
-            else:
-                current_room = 0
-                current_step = 0
-                play = True
-                print_sleep("=" * lwidth)
+            choice = ""
+            while choice not in ["y","n", "quit"]:
+                choice = input("Do you want to play again? y/n ")
+                if choice in ["n", "quit"]:
+                    # any other input is ok to close the game
+                    play = False
+                    print_sleep("*" * lwidth)
+                elif choice == "y":
+                    current_room = 0
+                    current_step = 0
+                    play = True
+                    print_sleep("=" * lwidth)
+                else: 
+                    print_sleep("This is not a valid option.")
+                    
 
     goodbye = "Goodbye from the world of Dungeonerum."
     visitagain = "Visit us again soon."
